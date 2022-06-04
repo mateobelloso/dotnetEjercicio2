@@ -1,6 +1,6 @@
 using AL.Aplicacion.Entidades;
 
-using AL.Aplicacion.Interfaces;
+namespace AL.Aplicacion.Interfaces;
 
 public interface IRepositorioInscripcion
 {

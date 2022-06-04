@@ -1,0 +1,69 @@
+@page "/listadoCursos"
+@inject ListarCursosUseCase ListarCursosUseCase
+@inject EliminarCursoUseCase EliminarCursoUseCase
+@inject IJSRuntime JsRuntime
+@inject ObtenerCursoUseCase ObtenerCursoUseCase
+@inject NavigationManager Navegador
+
+<table class="table">
+<thead>
+<tr>
+<th>ID</th>
+<th>TITULO</th>
+<th>DESCRIPCION</th>
+<th>FECHA DE INICIO</th>
+<th>FECHA DE FINALIZACION</th>
+<th>ACCIONES</th>
+</tr>
+</thead>
+<tbody>
+@foreach (var curso in _lista)
+{
+<tr>
+<td>@curso.Id</td>
+<td>@curso.Titulo</td>
+<td>@curso.Descripcion</td>
+<td>@curso.Fecha_inicio</td>
+<td>@curso.Fecha_finalizacion</td>
+<td>
+    <button class="btn btn-primary btn-sm" @onclick="()=>VerCurso(curso.Id)"><i class="oi oi-eye"></i>Ver curso</button>
+    <button class="btn btn-success btn-sm" @onclick="()=>ModificarCurso(curso.Id)"><i class="oi oi-pencil"></i>Modificar curso</button>
+    <button class="btn btn-danger btn-sm" @onclick="()=>EliminarCurso(curso.Id)"><i class="oi oi-trash"></i>Eliminar curso</button>
+</td>
+</tr>
+}
+</tbody>
+</table>
+
+@code 
+{
+    List<Curso> _lista = new List<Curso>();
+    protected override void OnInitialized()
+    {
+        _lista = ListarCursosUseCase.Ejecutar();
+    }
+
+    void VerCurso(int id)
+    {
+        Navegador.NavigateTo($"verCurso/{id}");
+    }
+
+    void ModificarCurso(int id)
+    {
+        Navegador.NavigateTo($"agregarCurso/{id}");
+    }
+
+    async Task EliminarCurso(int id)
+    {
+        var _cursoSeleccionado= ObtenerCursoUseCase.Ejecutar(id);
+        if(_cursoSeleccionado != null)
+        {
+            bool confirmado= await JsRuntime.InvokeAsync<bool>("confirm",$"Esta seguro que desea borrar el curso {_cursoSeleccionado.Titulo}?");
+            if(confirmado)
+            {
+                EliminarCursoUseCase.Ejecutar(id);
+                _lista= ListarCursosUseCase.Ejecutar();
+            }
+        }
+    }
+}
