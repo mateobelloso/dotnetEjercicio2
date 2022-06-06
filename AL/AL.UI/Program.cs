@@ -22,6 +22,8 @@ builder.Services.AddTransient<EliminarCursoUseCase>();
 builder.Services.AddTransient<ListarCursosUseCase>();
 builder.Services.AddScoped<IRepositorioCurso,RepositorioCurso>();
 
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

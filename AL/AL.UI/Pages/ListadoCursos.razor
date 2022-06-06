@@ -27,6 +27,7 @@
 <td>@curso.Fecha_finalizacion</td>
 <td>
     <button class="btn btn-primary btn-sm" @onclick="()=>VerCurso(curso.Id)"><i class="oi oi-eye"></i>Ver curso</button>
+    <button class="btn btn-info btn-sm" @onclick="()=>VerEstudiantesInscriptos(curso.Id)"><i class="oi oi-people"></i>Ver estudiantes inscriptos</button>
     <button class="btn btn-success btn-sm" @onclick="()=>ModificarCurso(curso.Id)"><i class="oi oi-pencil"></i>Modificar curso</button>
     <button class="btn btn-danger btn-sm" @onclick="()=>EliminarCurso(curso.Id)"><i class="oi oi-trash"></i>Eliminar curso</button>
 </td>
@@ -51,6 +52,11 @@
     void ModificarCurso(int id)
     {
         Navegador.NavigateTo($"agregarCurso/{id}");
+    }
+
+    void VerEstudiantesInscriptos(int id)
+    {
+        Navegador.NavigateTo($"estudiantesInscriptos/{id}");
     }
 
     async Task EliminarCurso(int id)
