@@ -1,0 +1,79 @@
+@page "/listadoEstudiantes"
+
+@inject ListarEstudiantesUseCase ListarEstudiantesUseCase
+@inject EliminarEstudianteUseCase EliminarEstudianteUseCase
+@inject IJSRuntime JsRuntime
+@inject ObtenerEstudianteUseCase ObtenerEstudianteUseCase
+@inject NavigationManager Navegador
+
+@if (_se_elimino)
+{
+    <p class='alert alert-success'> Estudiante eliminado satisfactoriamente.</p>
+
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>DNI</th>
+            <th>NOMBRE</th>
+            <th>APELLIDO</th>
+            <th>EMAIL</th>
+            <th>ACCIONES</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var estudiante in _lista)
+        {
+        <tr>
+        <td>@estudiante.Id</td>
+        <td>@estudiante.Dni</td>
+        <td>@estudiante.Nombre</td>
+        <td>@estudiante.Apellido</td>
+        <td>@estudiante.Email</td>
+        <td>    
+            <button class="btn btn-info btn-sm" @onclick="()=>VerCursosInscriptos(estudiante.Id)"><i class="oi oi-people"></i>Ver estudiantes inscriptos</button>
+            <button class="btn btn-success btn-sm" @onclick="()=>ModificarEstudiante(estudiante.Id)"><i class="oi oi-pencil"></i>Modificar estudiante</button>
+            <button class="btn btn-danger btn-sm" @onclick="()=>EliminarEstudiante(estudiante.Id)"><i class="oi oi-trash"></i>Eliminar estudiante</button>
+        </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+@code 
+{
+    bool _se_elimino = false;
+    List<Estudiante> _lista = new List<Estudiante>();
+    protected override void OnInitialized()
+    {
+        _lista = ListarEstudiantesUseCase.Ejecutar();
+    }
+
+    void ModificarEstudiante(int id)
+    {
+        Navegador.NavigateTo($"agregarEstudiante/{id}");
+    }
+
+    void VerCursosInscriptos(int id)
+    {
+        Navegador.NavigateTo($"estudiantesInscriptos/{id}");
+    }
+
+    async Task EliminarEstudiante(int id)
+    {
+        var _estudianteSeleccionado= ObtenerEstudianteUseCase.Ejecutar(id);
+        if(_estudianteSeleccionado != null)
+        {
+            bool confirmado= await JsRuntime.InvokeAsync<bool>("confirm",$"Esta seguro que desea borrar el estudiante con id {_estudianteSeleccionado.Id}?");
+            if(confirmado)
+            {
+                EliminarEstudianteUseCase.Ejecutar(id);
+                _lista= ListarEstudiantesUseCase.Ejecutar();
+            }
+        }
+
+        _se_elimino = true;
+    }
+}

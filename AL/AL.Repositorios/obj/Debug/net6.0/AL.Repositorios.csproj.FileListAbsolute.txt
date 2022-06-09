@@ -13,3 +13,18 @@ C:\Users\mateo\Desktop\Taller de Lenguajes .NET\dotnetEjercicio2\AL\AL.Repositor
 C:\Users\mateo\Desktop\Taller de Lenguajes .NET\dotnetEjercicio2\AL\AL.Repositorios\obj\Debug\net6.0\refint\AL.Repositorios.dll
 C:\Users\mateo\Desktop\Taller de Lenguajes .NET\dotnetEjercicio2\AL\AL.Repositorios\obj\Debug\net6.0\AL.Repositorios.pdb
 C:\Users\mateo\Desktop\Taller de Lenguajes .NET\dotnetEjercicio2\AL\AL.Repositorios\obj\Debug\net6.0\ref\AL.Repositorios.dll
+J:\Facu J\dotnetEjercicio2\AL\AL.Repositorios\bin\Debug\net6.0\AL.Repositorios.deps.json
+J:\Facu J\dotnetEjercicio2\AL\AL.Repositorios\bin\Debug\net6.0\AL.Repositorios.dll
+J:\Facu J\dotnetEjercicio2\AL\AL.Repositorios\bin\Debug\net6.0\AL.Repositorios.pdb
+J:\Facu J\dotnetEjercicio2\AL\AL.Repositorios\bin\Debug\net6.0\AL.Aplicacion.dll
+J:\Facu J\dotnetEjercicio2\AL\AL.Repositorios\bin\Debug\net6.0\AL.Aplicacion.pdb
+J:\Facu J\dotnetEjercicio2\AL\AL.Repositorios\obj\Debug\net6.0\AL.Repositorios.csproj.AssemblyReference.cache
+J:\Facu J\dotnetEjercicio2\AL\AL.Repositorios\obj\Debug\net6.0\AL.Repositorios.GeneratedMSBuildEditorConfig.editorconfig
+J:\Facu J\dotnetEjercicio2\AL\AL.Repositorios\obj\Debug\net6.0\AL.Repositorios.AssemblyInfoInputs.cache
+J:\Facu J\dotnetEjercicio2\AL\AL.Repositorios\obj\Debug\net6.0\AL.Repositorios.AssemblyInfo.cs
+J:\Facu J\dotnetEjercicio2\AL\AL.Repositorios\obj\Debug\net6.0\AL.Repositorios.csproj.CoreCompileInputs.cache
+J:\Facu J\dotnetEjercicio2\AL\AL.Repositorios\obj\Debug\net6.0\AL.Repositorios.csproj.CopyComplete
+J:\Facu J\dotnetEjercicio2\AL\AL.Repositorios\obj\Debug\net6.0\AL.Repositorios.dll
+J:\Facu J\dotnetEjercicio2\AL\AL.Repositorios\obj\Debug\net6.0\refint\AL.Repositorios.dll
+J:\Facu J\dotnetEjercicio2\AL\AL.Repositorios\obj\Debug\net6.0\AL.Repositorios.pdb
+J:\Facu J\dotnetEjercicio2\AL\AL.Repositorios\obj\Debug\net6.0\ref\AL.Repositorios.dll

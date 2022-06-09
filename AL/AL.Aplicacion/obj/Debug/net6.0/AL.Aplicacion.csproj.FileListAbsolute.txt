@@ -10,3 +10,15 @@ C:\Users\mateo\Desktop\Taller de Lenguajes .NET\dotnetEjercicio2\AL\AL.Aplicacio
 C:\Users\mateo\Desktop\Taller de Lenguajes .NET\dotnetEjercicio2\AL\AL.Aplicacion\obj\Debug\net6.0\refint\AL.Aplicacion.dll
 C:\Users\mateo\Desktop\Taller de Lenguajes .NET\dotnetEjercicio2\AL\AL.Aplicacion\obj\Debug\net6.0\AL.Aplicacion.pdb
 C:\Users\mateo\Desktop\Taller de Lenguajes .NET\dotnetEjercicio2\AL\AL.Aplicacion\obj\Debug\net6.0\ref\AL.Aplicacion.dll
+J:\Facu J\dotnetEjercicio2\AL\AL.Aplicacion\bin\Debug\net6.0\AL.Aplicacion.deps.json
+J:\Facu J\dotnetEjercicio2\AL\AL.Aplicacion\bin\Debug\net6.0\AL.Aplicacion.dll
+J:\Facu J\dotnetEjercicio2\AL\AL.Aplicacion\bin\Debug\net6.0\AL.Aplicacion.pdb
+J:\Facu J\dotnetEjercicio2\AL\AL.Aplicacion\obj\Debug\net6.0\AL.Aplicacion.csproj.AssemblyReference.cache
+J:\Facu J\dotnetEjercicio2\AL\AL.Aplicacion\obj\Debug\net6.0\AL.Aplicacion.GeneratedMSBuildEditorConfig.editorconfig
+J:\Facu J\dotnetEjercicio2\AL\AL.Aplicacion\obj\Debug\net6.0\AL.Aplicacion.AssemblyInfoInputs.cache
+J:\Facu J\dotnetEjercicio2\AL\AL.Aplicacion\obj\Debug\net6.0\AL.Aplicacion.AssemblyInfo.cs
+J:\Facu J\dotnetEjercicio2\AL\AL.Aplicacion\obj\Debug\net6.0\AL.Aplicacion.csproj.CoreCompileInputs.cache
+J:\Facu J\dotnetEjercicio2\AL\AL.Aplicacion\obj\Debug\net6.0\AL.Aplicacion.dll
+J:\Facu J\dotnetEjercicio2\AL\AL.Aplicacion\obj\Debug\net6.0\refint\AL.Aplicacion.dll
+J:\Facu J\dotnetEjercicio2\AL\AL.Aplicacion\obj\Debug\net6.0\AL.Aplicacion.pdb
+J:\Facu J\dotnetEjercicio2\AL\AL.Aplicacion\obj\Debug\net6.0\ref\AL.Aplicacion.dll
