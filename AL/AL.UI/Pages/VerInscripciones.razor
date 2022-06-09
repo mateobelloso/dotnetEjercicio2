@@ -1,0 +1,60 @@
+@page "/verInscripciones/{Id:int?}"
+
+@inject ObtenerEstudianteUseCase ObtenerEstudianteUseCase
+@inject NavigationManager Navegador
+
+@if(_estudiante != null)
+{
+    <h1>Inscripciones del estudiante @_estudiante.Nombre @_estudiante.Apellido</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+            <th>ID</th>
+            <th>TITULO</th>
+            <th>DESCRIPCION</th>
+            <th>Fecha_inicio</th>
+            <th>Fecha_finalizacion</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        @if(_estudiante.Inscripciones != null)
+        {
+            @foreach (var inscripcion in _estudiante.Inscripciones)
+            {
+                <tr>
+                @if(inscripcion.Curso != null)
+                {
+                    <td>@inscripcion.Curso.Id</td>
+                    <td>@inscripcion.Curso.Titulo</td>
+                    <td>@inscripcion.Curso.Descripcion</td>
+                    <td>@inscripcion.Curso.Fecha_inicio</td>
+                    <td>@inscripcion.Curso.Fecha_finalizacion</td>
+                }
+                </tr>
+            }
+        }
+        </tbody>
+    </table>
+}
+
+
+
+@code
+{
+    Estudiante? _estudiante= new Estudiante();
+    //PROPIEDAD DEL PARAMETRO RECIBIDO
+    [Parameter] public int? Id { get; set; }
+
+    //SE INVOCA CUANDO RECIBE EL PARAMETRO ID Y LO ASIGNA A LA PROPIEDAD ID
+    protected override void OnParametersSet()
+    {
+        if(Id != null)
+        {
+            _estudiante= ObtenerEstudianteUseCase.Ejecutar(Id.Value);
+            //_estudiante?.Inscripciones?.ToList();
+        }
+    }
+}
+

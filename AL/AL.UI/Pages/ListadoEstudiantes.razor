@@ -1,4 +1,4 @@
-@page "/listadoEstudiantes"
+@page "/listadoEstudiantes/{Mod:bool?}"
 
 @inject ListarEstudiantesUseCase ListarEstudiantesUseCase
 @inject EliminarEstudianteUseCase EliminarEstudianteUseCase
@@ -8,9 +8,14 @@
 
 @if (_se_elimino)
 {
-    <p class='alert alert-success'> Estudiante eliminado satisfactoriamente.</p>
-
+    <p class='alert alert-danger'> Estudiante eliminado satisfactoriamente.</p>
 }
+
+@if ( _se_modifico )
+{
+    <p class='alert alert-success'> Estudiante modificado correctamente.</p>
+}
+
 <table class="table">
     <thead>
         <tr>
@@ -33,7 +38,7 @@
         <td>@estudiante.Apellido</td>
         <td>@estudiante.Email</td>
         <td>    
-            <button class="btn btn-info btn-sm" @onclick="()=>VerCursosInscriptos(estudiante.Id)"><i class="oi oi-people"></i>Ver estudiantes inscriptos</button>
+            <button class="btn btn-info btn-sm" @onclick="()=>VerInscripciones(estudiante.Id)"><i class="oi oi-people"></i>Ver inscripciones</button>
             <button class="btn btn-success btn-sm" @onclick="()=>ModificarEstudiante(estudiante.Id)"><i class="oi oi-pencil"></i>Modificar estudiante</button>
             <button class="btn btn-danger btn-sm" @onclick="()=>EliminarEstudiante(estudiante.Id)"><i class="oi oi-trash"></i>Eliminar estudiante</button>
         </td>
@@ -44,11 +49,21 @@
 
 @code 
 {
+    [Parameter] public bool? Mod {get; set;}
     bool _se_elimino = false;
+    bool _se_modifico = false;
     List<Estudiante> _lista = new List<Estudiante>();
     protected override void OnInitialized()
     {
         _lista = ListarEstudiantesUseCase.Ejecutar();
+    }
+
+    protected override void OnParametersSet()
+    {
+        if( Mod != null)
+        {
+            _se_modifico = true;
+        }
     }
 
     void ModificarEstudiante(int id)
@@ -56,9 +71,9 @@
         Navegador.NavigateTo($"agregarEstudiante/{id}");
     }
 
-    void VerCursosInscriptos(int id)
+    void VerInscripciones(int id)
     {
-        Navegador.NavigateTo($"estudiantesInscriptos/{id}");
+        Navegador.NavigateTo($"verInscripciones/{id}");
     }
 
     async Task EliminarEstudiante(int id)

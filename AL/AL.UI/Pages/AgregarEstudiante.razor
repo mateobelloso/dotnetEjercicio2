@@ -17,11 +17,6 @@
     <p class='alert alert-success'> Estudiante agregado satisfactoriamente.</p>
 }
 
-@if (_se_modifico)
-{
-    <p class='alert alert-success'> Estudiante modificado correctamente.</p>
-}
-
 <input placeholder="Ingrese nombre del estudiante" @bind="_estudiante.Nombre" class="form-control">
 <input placeholder="Ingrese apellido del estudiante" @bind="_estudiante.Apellido" class="form-control">
 <input type='email' placeholder="Ingrese email" @bind="_estudiante.Email" class="form-control">
@@ -55,12 +50,14 @@
         {
             AgregarEstudianteUseCase.Ejecutar(_estudiante);
             _se_creo = true;
+            _estudiante = new Estudiante();
+            Navegador.NavigateTo("/agregarEstudiante");
         }else
         {
             ModificarEstudianteUseCase.Ejecutar(_estudiante);
-             _se_modifico = true;
+            _se_modifico = true;
+            Navegador.NavigateTo($"/listadoEstudiantes/{_se_modifico}");
         }
-        _estudiante = new Estudiante();
-        Navegador.NavigateTo("/agregarEstudiante");
+        
     }
 }

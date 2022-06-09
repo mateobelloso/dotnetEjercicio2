@@ -32,7 +32,7 @@ public class RepositorioEstudiante : IRepositorioEstudiante
     {
         using(var context = new InstitucionEducativaContext())
         {
-            var estudiante= context.Estudiantes.Where(e => e.Id == id).Include(e => e.Inscripciones).SingleOrDefault();
+            var estudiante= context.Estudiantes.Where(e => e.Id == id).Include(e => e.Inscripciones).ThenInclude(i => i.Curso).SingleOrDefault();
             return estudiante;
         }
     }
