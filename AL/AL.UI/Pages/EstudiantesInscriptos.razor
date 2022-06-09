@@ -41,14 +41,17 @@
 
 @code
 {
-    Curso _curso= new Curso();
+    Curso? _curso= new Curso();
+    //PROPIEDAD DEL PARAMETRO RECIBIDO
     [Parameter] public int? Id { get; set; }
 
+    //SE INVOCA CUANDO RECIBE EL PARAMETRO ID Y LO ASIGNA A LA PROPIEDAD ID
     protected override void OnParametersSet()
     {
         if(Id != null)
         {
-            var curso_hallado= ObtenerCursoUseCase.Ejecutar(Id.Value);
+            _curso= ObtenerCursoUseCase.Ejecutar(Id.Value);
+            //_curso?.Inscripciones?.ToList();
         }
     }
 }

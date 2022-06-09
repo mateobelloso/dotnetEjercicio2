@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using AL.Aplicacion.Entidades;
 using AL.Aplicacion.Interfaces;
 
@@ -7,26 +8,49 @@ public class RepositorioEstudiante : IRepositorioEstudiante
 {
     public void AgregarEstudiante(Estudiante estudiante)
     {
-        throw new NotImplementedException();
+        using(var context = new InstitucionEducativaContext())
+        {
+            context.Add(estudiante);
+            context.SaveChanges();
+        }
     }
 
     public void EliminarEstudiante(int id)
     {
-        throw new NotImplementedException();
+        var estudianteBorrar= GetEstudiante(id);
+        using(var context = new InstitucionEducativaContext())
+        {
+            if(estudianteBorrar != null)
+            {
+                context.Remove(estudianteBorrar);
+                context.SaveChanges();
+            }
+        }
     }
 
     public Estudiante? GetEstudiante(int id)
     {
-        throw new NotImplementedException();
+        using(var context = new InstitucionEducativaContext())
+        {
+            var estudiante= context.Estudiantes.Where(e => e.Id == id).Include(e => e.Inscripciones).SingleOrDefault();
+            return estudiante;
+        }
     }
 
     public List<Estudiante> GetEstudiantes()
     {
-        throw new NotImplementedException();
+        using(var context = new InstitucionEducativaContext())
+        {
+            return context.Estudiantes.Include(e => e.Inscripciones).ToList();
+        }
     }
 
     public void ModificarEstudiante(Estudiante estudiante)
     {
-        throw new NotImplementedException();
+        using(var context = new InstitucionEducativaContext())
+        {
+            context.Update(estudiante);
+            context.SaveChanges();
+        }
     }
 }

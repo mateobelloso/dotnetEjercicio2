@@ -15,12 +15,28 @@ builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
 
 //SE AGREGAN LOS SERVICIOS DE LOS CONTENEDORES DE INTERFACES
+//CASOS DE USO DE LOS CURSOS
 builder.Services.AddTransient<AgregarCursoUseCase>();
 builder.Services.AddTransient<ModificarCursoUseCase>();
 builder.Services.AddTransient<ObtenerCursoUseCase>();
 builder.Services.AddTransient<EliminarCursoUseCase>();
 builder.Services.AddTransient<ListarCursosUseCase>();
+//CASOS DE USO DE LOS ESTUDIANTES
+builder.Services.AddTransient<AgregarEstudianteUseCase>();
+builder.Services.AddTransient<ModificarEstudianteUseCase>();
+builder.Services.AddTransient<ObtenerEstudianteUseCase>();
+builder.Services.AddTransient<EliminarEstudianteUseCase>();
+builder.Services.AddTransient<ListarEstudiantesUseCase>();
+//CASOS DE USO DE LAS INSCRIPCIONES
+builder.Services.AddTransient<AgregarInscripcionUseCase>();
+builder.Services.AddTransient<ModificarInscripcionUseCase>();
+builder.Services.AddTransient<ObtenerInscripcionUseCase>();
+builder.Services.AddTransient<EliminarInscripcionUseCase>();
+builder.Services.AddTransient<ListarInscripcionesUseCase>();
+//CONFIGURAR LOS REPOSITORIOS CON SUS INTERFACES
 builder.Services.AddScoped<IRepositorioCurso,RepositorioCurso>();
+builder.Services.AddScoped<IRepositorioEstudiante,RepositorioEstudiante>();
+builder.Services.AddScoped<IRepositorioInscripcion,RepositorioInscripcion>();
 
 
 
