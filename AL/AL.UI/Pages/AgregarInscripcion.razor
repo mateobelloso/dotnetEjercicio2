@@ -26,19 +26,23 @@
 <input placeholder="Ingrese apellido del estudiante" @bind="_inscripcion.Estudiante?.Apellido" class="form-control">
 <input type='email' placeholder="Ingrese email" @bind="_inscripcion.Estudiante?.Email" class="form-control">
 <input type='number' placeholder="Ingrese DNI" @bind="_inscripcion.Estudiante?.Dni" class="form-control">-->
-<label>Elija un estudiante</label>
-<select @bind="_estudianteSeleccionado" class="form-control" required>
+<label for="estudiante">Elija un estudiante</label>
+<select name="estudiante" aria-placeholder="Seleccionar" @bind="_estudianteSeleccionado" class="form-control">
+    @* INTENTE HACER ALGO MAS LINDO PERO NO SALIO *@
     @foreach (var estudiante in _listaEstudiantes)
     {
-        <option value="@estudiante.Id">DNI:@estudiante.Dni <br>
-                                        Nombre y apellido: @estudiante.Nombre @estudiante.Apellido <br>
-                                        Email: @estudiante.Email <br>
+        <option value="@estudiante.Id"> 
+            <ul>
+                <li>DNI:@estudiante.Dni</li><br>
+                <li>Nombre y apellido: @estudiante.Nombre @estudiante.Apellido</li><br>
+                <li>Email: @estudiante.Email</li><br>                          
+            </ul> 
         </option>        
     }
 </select>
 
-<label>Elija un curso</label>
-<select @bind="_cursoSeleccionado" class="form-control">
+<label for="curso">Elija un curso</label>
+<select name="curso" @bind="_cursoSeleccionado" class="form-control">
     @foreach (var curso in _listaCursos)
     {
         <option value="@curso.Id">@curso.Titulo - @curso.Descripcion - @curso.Fecha_inicio - @curso.Fecha_finalizacion</option>        
