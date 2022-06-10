@@ -4,7 +4,9 @@
 @inject ObtenerInscripcionUseCase ObtenerInscripcionUseCase
 @inject ModificarInscripcionUseCase ModificarInscripcionUseCase
 @inject ListarCursosUseCase ListarCursosUseCase
+@inject ObtenerCursoUseCase ObtenerCursoUseCase
 @inject ListarEstudiantesUseCase ListarEstudiantesUseCase
+@inject ObtenerEstudianteUseCase ObtenerEstudianteUseCase
 
 @if (_nuevaInscripcion)
 {
@@ -25,18 +27,18 @@
 <input type='email' placeholder="Ingrese email" @bind="_inscripcion.Estudiante?.Email" class="form-control">
 <input type='number' placeholder="Ingrese DNI" @bind="_inscripcion.Estudiante?.Dni" class="form-control">-->
 <label>Elija un estudiante</label>
-<select class="form-control">
+<select @bind="_estudianteSeleccionado" class="form-control">
     @foreach (var estudiante in _listaEstudiantes)
     {
-        <option value="@estudiante">@estudiante.Dni - @estudiante.Nombre - @estudiante.Apellido - @estudiante.Email</option>        
+        <option value="@estudiante.Id">@estudiante.Dni - @estudiante.Nombre - @estudiante.Apellido - @estudiante.Email</option>        
     }
 </select>
 
 <label>Elija un curso</label>
-<select class="form-control">
+<select @bind="_cursoSeleccionado" class="form-control">
     @foreach (var curso in _listaCursos)
     {
-        <option value="@curso">@curso.Titulo - @curso.Descripcion - @curso.Fecha_inicio - @curso.Fecha_finalizacion</option>        
+        <option value="@curso.Id">@curso.Titulo - @curso.Descripcion - @curso.Fecha_inicio - @curso.Fecha_finalizacion</option>        
     }
 </select>
 <input type="datetime-local" @bind="_inscripcion.Fecha_inscripcion" class="form-control">
@@ -49,11 +51,16 @@
 
 <button class="btn btn-primary" @onclick="Aceptar">Aceptar</button>
 
+@_cursoSeleccionado
+@_estudianteSeleccionado
+
 @code 
 {
     Inscripcion _inscripcion = new Inscripcion();
-    Estudiante _estudiante= new Estudiante();
-    Curso _curso= new Curso();
+    Estudiante? _estudiante= new Estudiante();
+    Curso? _curso= new Curso();
+    int _estudianteSeleccionado;
+    int _cursoSeleccionado;
     List<Estudiante> _listaEstudiantes= new List<Estudiante>();
     List<Curso> _listaCursos= new List<Curso>();
     [Parameter] public int? Id { get; set; }
@@ -82,6 +89,8 @@
             
     void Aceptar()
     {
+        _estudiante= ObtenerEstudianteUseCase?.Ejecutar(_estudianteSeleccionado);
+        _curso= ObtenerCursoUseCase.Ejecutar(_cursoSeleccionado);
         if(_nuevaInscripcion)
         {
             _inscripcion.Estudiante= _estudiante;
@@ -92,6 +101,8 @@
             Navegador.NavigateTo("/agregarInscripcion");
         }else
         {
+            _inscripcion.Estudiante= _estudiante;
+            _inscripcion.Curso= _curso;
             ModificarInscripcionUseCase.Ejecutar(_inscripcion);
             _se_modifico = true;
             Navegador.NavigateTo($"/listadoInscripciones/{_se_modifico}");

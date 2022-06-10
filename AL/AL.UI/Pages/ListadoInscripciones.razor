@@ -1,0 +1,86 @@
+@page "/listadoInscripciones/{Mod:bool?}"
+@inject ListarInscripcionesUseCase ListarInscripcionesUseCase
+@inject ObtenerInscripcionUseCase ObtenerInscripcionUseCase
+@inject EliminarInscripcionUseCase EliminarInscripcionUseCase
+@inject NavigationManager Navegador
+@inject IJSRuntime JsRuntime
+
+
+@if (_se_elimino)
+{
+    <p class='alert alert-danger'> Estudiante eliminado satisfactoriamente.</p>
+}
+
+@if ( _se_modifico )
+{
+    <p class='alert alert-success'> Estudiante modificado correctamente.</p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>ESTUDIANTE</th>
+            <th>CURSO</th>
+            <th>FECHA INSCRIPCION</th>
+            <th>ACCIONES</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var inscripcion in _lista)
+        {
+        <tr>
+        <td>@inscripcion.Id</td>
+        <td>@inscripcion.Estudiante.Dni - @inscripcion.Estudiante.Nombre - @inscripcion.Estudiante.Apellido</td>
+        <td>@inscripcion.Curso.Titulo - @inscripcion.Curso.Fecha_inicio - @inscripcion.Curso.Fecha_finalizacion</td>
+        <td>@inscripcion.Fecha_inscripcion</td>
+        <td>
+            <button class="btn btn-success btn-sm" @onclick="()=>ModificarInscripcion(inscripcion.Id)"><i class="oi oi-pencil"></i>Modificar inscripcion</button>
+            <button class="btn btn-danger btn-sm" @onclick="()=>EliminarInscripcion(inscripcion.Id)"><i class="oi oi-trash"></i>Eliminar inscripcion</button>
+        </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+@code 
+{
+    [Parameter] public bool? Mod {get; set;}
+    bool _se_elimino = false;
+    bool _se_modifico = false;
+    List<Inscripcion> _lista = new List<Inscripcion>();
+    protected override void OnInitialized()
+    {
+        _lista = ListarInscripcionesUseCase.Ejecutar();
+    }
+
+    protected override void OnParametersSet()
+    {
+        if( Mod != null)
+        {
+            _se_modifico = true;
+        }
+    }
+
+    void ModificarInscripcion(int id)
+    {
+        Navegador.NavigateTo($"agregarInscripcion/{id}");
+    }
+
+    async Task EliminarInscripcion(int id)
+    {
+        var _inscripcionSeleccionado= ObtenerInscripcionUseCase.Ejecutar(id);
+        if(_inscripcionSeleccionado != null)
+        {
+            bool confirmado= await JsRuntime.InvokeAsync<bool>("confirm",$"Esta seguro que desea borrar el estudiante con id {_inscripcionSeleccionado.Id}?");
+            if(confirmado)
+            {
+                EliminarInscripcionUseCase.Ejecutar(id);
+                _lista= ListarInscripcionesUseCase.Ejecutar();
+            }
+        }
+
+        _se_elimino = true;
+    }
+}

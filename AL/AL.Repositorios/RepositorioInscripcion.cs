@@ -10,7 +10,9 @@ public class RepositorioInscripcion : IRepositorioInscripcion
     {
         using(var context = new InstitucionEducativaContext())
         {
-            context.Add(inscripcion);
+            //context.Add(inscripcion);
+            //LINEA FALOPA  A CONSULTAR
+            context.ChangeTracker.TrackGraph(inscripcion, node => node.Entry.State= !node.Entry.IsKeySet ? EntityState.Added : EntityState.Unchanged);
             context.SaveChanges();
         }
     }
