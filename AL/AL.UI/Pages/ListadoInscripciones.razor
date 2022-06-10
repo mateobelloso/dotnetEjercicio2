@@ -32,8 +32,8 @@
         {
         <tr>
         <td>@inscripcion.Id</td>
-        <td>@inscripcion.Estudiante.Dni - @inscripcion.Estudiante.Nombre - @inscripcion.Estudiante.Apellido</td>
-        <td>@inscripcion.Curso.Titulo - @inscripcion.Curso.Fecha_inicio - @inscripcion.Curso.Fecha_finalizacion</td>
+        <td>@inscripcion.Estudiante?.Dni - @inscripcion.Estudiante?.Nombre - @inscripcion.Estudiante?.Apellido</td>
+        <td>@inscripcion.Curso?.Titulo - @inscripcion.Curso?.Fecha_inicio - @inscripcion.Curso?.Fecha_finalizacion</td>
         <td>@inscripcion.Fecha_inscripcion</td>
         <td>
             <button class="btn btn-success btn-sm" @onclick="()=>ModificarInscripcion(inscripcion.Id)"><i class="oi oi-pencil"></i>Modificar inscripcion</button>
