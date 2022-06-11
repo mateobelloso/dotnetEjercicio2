@@ -12,18 +12,6 @@ public class RepositorioCurso : IRepositorioCurso
         {
             context.Database.EnsureCreated();
             context.Add(curso);
-            Curso c= new Curso()
-            {
-                Titulo= "Prueba con inscripciones",
-                Descripcion= "descripcion",
-                Fecha_inicio= DateTime.Now,
-                Fecha_finalizacion= DateTime.Now,
-                Inscripciones= new List<Inscripcion>() {
-                    new Inscripcion() {Estudiante= new Estudiante() { Dni=40320988, Nombre="Mateo", Apellido="Belloso", Email="mateobp@mail.com"},Fecha_inscripcion= DateTime.Now},
-                    new Inscripcion() {Estudiante= new Estudiante() { Dni=40320999, Nombre="Agustin", Apellido="Rampinini", Email="agus@mail.com"},Fecha_inscripcion= DateTime.Now}
-                }
-            };
-            context.Add(c);
             context.SaveChanges();
         }
     }

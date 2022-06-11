@@ -96,20 +96,16 @@
             
     void Aceptar()
     {
-        _estudiante= ObtenerEstudianteUseCase?.Ejecutar(_estudianteSeleccionado);
-        _curso= ObtenerCursoUseCase.Ejecutar(_cursoSeleccionado);
+        _inscripcion.EstudianteId= _estudianteSeleccionado;
+        _inscripcion.CursoId= _cursoSeleccionado;
         if(_nuevaInscripcion)
         {
-            _inscripcion.Estudiante= _estudiante;
-            _inscripcion.Curso= _curso;
             AgregarInscripcionUseCase.Ejecutar(_inscripcion);
             _se_creo = true;
             _inscripcion = new Inscripcion();
             Navegador.NavigateTo("/agregarInscripcion");
         }else
         {
-            _inscripcion.Estudiante= _estudiante;
-            _inscripcion.Curso= _curso;
             ModificarInscripcionUseCase.Ejecutar(_inscripcion);
             _se_modifico = true;
             Navegador.NavigateTo($"/listadoInscripciones/{_se_modifico}");

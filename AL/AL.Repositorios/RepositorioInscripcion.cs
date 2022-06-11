@@ -10,9 +10,8 @@ public class RepositorioInscripcion : IRepositorioInscripcion
     {
         using(var context = new InstitucionEducativaContext())
         {
-            //context.Add(inscripcion);
-            //LINEA FALOPA  A CONSULTAR
-            context.ChangeTracker.TrackGraph(inscripcion, node => node.Entry.State= !node.Entry.IsKeySet ? EntityState.Added : EntityState.Unchanged);
+            //context.ChangeTracker.TrackGraph(inscripcion, node => node.Entry.State= !node.Entry.IsKeySet ? EntityState.Added : EntityState.Unchanged);
+            context.Add(inscripcion);
             context.SaveChanges();
         }
     }
@@ -52,7 +51,8 @@ public class RepositorioInscripcion : IRepositorioInscripcion
     {
         using(var context = new InstitucionEducativaContext())
         {
-            context.Update(inscripcion);
+            //context.Update(inscripcion);
+            context.Entry(inscripcion).State= EntityState.Modified;
             context.SaveChanges();
         }
     }
