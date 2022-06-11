@@ -3,11 +3,11 @@ using AL.Aplicacion.Interfaces;
 
 namespace AL.Aplicacion.UseCases;
 
-public class ListarEstudiantesEstudiandoUseCasesUseCase
+public class ListarEstudiantesEstudiandoUseCase
 {
     private readonly IRepositorioEstudiante _rEstudiante;
 
-    public ListarEstudiantesEstudiandoUseCasesUseCase(IRepositorioEstudiante rEstudiante)
+    public ListarEstudiantesEstudiandoUseCase(IRepositorioEstudiante rEstudiante)
     {
         _rEstudiante= rEstudiante;
     }

@@ -1,23 +1,23 @@
-@page "/estudiantesEstudiando"
+@page "/estudiantesAntiguos"
 
-@inject ListarEstudiantesEstudiandoUseCase ListarEstudiantesEstudiandoUseCase
+@inject ListarEstudiantesAntiguosUseCase ListarEstudiantesAntiguosUseCase
 @inject NavigationManager Navegador
 
-<h1>Estudiantes que se encuentran cursando</h1>
+<h1>Estudiantes que finalizaron un curso</h1>
 
 <table class="table">
 <thead>
     <tr>
         <th>NOMBRE</th>
         <th>APELLIDO</th>
-        <th>ESTA CURSANDO</th>
+        <th>CURSO REALIZADO</th>
     </tr>
 </thead>
 
 <tbody>
-@if(_estudiantesEstudiando != null)
+@if(_estudiantesAntiguos != null)
 {
-    @foreach (var estudiante in _estudiantesEstudiando)
+    @foreach (var estudiante in _estudiantesAntiguos)
     {
         <tr>                
             <td>@estudiante.Nombre</td>
@@ -34,10 +34,10 @@
 
 @code
 {
-    List<Estudiante> _estudiantesEstudiando = new List<Estudiante>();
+    List<Estudiante> _estudiantesAntiguos = new List<Estudiante>();
 
     protected override void OnInitialized()
     {
-        _estudiantesEstudiando = ListarEstudiantesEstudiandoUseCase.Ejecutar();
+        _estudiantesAntiguos = ListarEstudiantesAntiguosUseCase.Ejecutar();
     }
 }

@@ -1,6 +1,6 @@
 ﻿<div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="">AL.UI</a>
+        <a class="navbar-brand" href="">Institucion Educativa</a>
         <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -11,11 +11,11 @@
     <nav class="flex-column">
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Homee
+                <span class="oi oi-home" aria-hidden="true"></span> Inicio
             </NavLink>
         </div>
 
-        <div class="nav-item px-3">
+        <!--<div class="nav-item px-3">
             <NavLink class="nav-link" href="counter">
                 <span class="oi oi-plus" aria-hidden="true"></span> Counter
             </NavLink>
@@ -25,10 +25,10 @@
             <NavLink class="nav-link" href="fetchdata">
                 <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
             </NavLink>
-        </div>
+        </div>-->
         
         <div class="nav-item px-3">
-            <NavLink class="nav-link" @onclick="()=>DesplegarCursos()" href="#">
+            <NavLink class="nav-link" @onclick="()=>DesplegarCursos()" href="">
                 <span class="oi oi-book"  aria-hidden="true"></span> Cursos
             </NavLink>
         </div>
@@ -47,7 +47,7 @@
         }
 
         <div class="nav-item px-3">
-            <NavLink class="nav-link" @onclick="()=>DesplegarEstudiantes()" href="#">
+            <NavLink class="nav-link" @onclick="()=>DesplegarEstudiantes()" href="">
                 <span class="oi oi-people"  aria-hidden="true"></span> Estudiantes
             </NavLink>
         </div>
@@ -66,7 +66,7 @@
         }
 
         <div class="nav-item px-3">
-            <NavLink class="nav-link" @onclick="()=>DesplegarInscripciones()" href="#">
+            <NavLink class="nav-link" @onclick="()=>DesplegarInscripciones()" href="">
                 <span class="oi oi-document"  aria-hidden="true"></span> Inscripciones
             </NavLink>
         </div>
@@ -79,7 +79,7 @@
         </div>
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="listadoInscripciones">
-                <span class="oi oi-list" aria-hidden="true"></span> Listado de Inscripciones
+                <span class="oi oi-list" aria-hidden="true"></span> Listado Inscripciones
             </NavLink>
         </div>
         }
