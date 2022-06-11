@@ -22,12 +22,17 @@
     <p class='alert alert-success'> Inscripción creada.</p>
 }
 
+@if (_errorSeleccion)
+{
+    <p class="alert alert-danger">Debe elegir un curso y un estudiante</p>
+}
+
 <!--<input placeholder="Ingrese nombre del estudiante" @bind="_inscripcion.Estudiante?.Nombre" class="form-control">
 <input placeholder="Ingrese apellido del estudiante" @bind="_inscripcion.Estudiante?.Apellido" class="form-control">
 <input type='email' placeholder="Ingrese email" @bind="_inscripcion.Estudiante?.Email" class="form-control">
 <input type='number' placeholder="Ingrese DNI" @bind="_inscripcion.Estudiante?.Dni" class="form-control">-->
 <label for="estudiante">Elija un estudiante</label>
-<select name="estudiante" aria-placeholder="Seleccionar" @bind="_estudianteSeleccionado" class="form-control">
+<select name="estudiante" aria-placeholder="Seleccionar" @bind="_estudianteSeleccionado" class="form-control" required>
     @* INTENTE HACER ALGO MAS LINDO PERO NO SALIO *@
     @foreach (var estudiante in _listaEstudiantes)
     {
@@ -42,7 +47,7 @@
 </select>
 
 <label for="curso">Elija un curso</label>
-<select name="curso" @bind="_cursoSeleccionado" class="form-control">
+<select name="curso" aria-placeholder="Seleccionar" @bind="_cursoSeleccionado" class="form-control" required>
     @foreach (var curso in _listaCursos)
     {
         <option value="@curso.Id">@curso.Titulo - @curso.Descripcion - @curso.Fecha_inicio - @curso.Fecha_finalizacion</option>        
@@ -63,17 +68,16 @@
 
 @code 
 {
-    Inscripcion _inscripcion = new Inscripcion();
-    Estudiante? _estudiante= new Estudiante();
-    Curso? _curso= new Curso();
-    int _estudianteSeleccionado;
-    int _cursoSeleccionado;
+    Inscripcion _inscripcion= new Inscripcion();
+    int _estudianteSeleccionado= -1;
+    int _cursoSeleccionado= -1;
     List<Estudiante> _listaEstudiantes= new List<Estudiante>();
     List<Curso> _listaCursos= new List<Curso>();
     [Parameter] public int? Id { get; set; }
     bool _nuevaInscripcion = true;
     bool _se_creo = false;
     bool _se_modifico = false;
+    bool _errorSeleccion= false;
 
     protected override void OnInitialized()
     {
@@ -96,19 +100,25 @@
             
     void Aceptar()
     {
-        _inscripcion.EstudianteId= _estudianteSeleccionado;
-        _inscripcion.CursoId= _cursoSeleccionado;
-        if(_nuevaInscripcion)
+        if((_estudianteSeleccionado != -1) && (_cursoSeleccionado != -1))
         {
-            AgregarInscripcionUseCase.Ejecutar(_inscripcion);
-            _se_creo = true;
-            _inscripcion = new Inscripcion();
-            Navegador.NavigateTo("/agregarInscripcion");
+            _inscripcion.EstudianteId= _estudianteSeleccionado;
+            _inscripcion.CursoId= _cursoSeleccionado;
+            if(_nuevaInscripcion)
+            {
+                AgregarInscripcionUseCase.Ejecutar(_inscripcion);
+                _se_creo = true;
+                _inscripcion = new Inscripcion();
+                Navegador.NavigateTo("/agregarInscripcion");
+            }else
+            {
+                ModificarInscripcionUseCase.Ejecutar(_inscripcion);
+                _se_modifico = true;
+                Navegador.NavigateTo($"/listadoInscripciones/{_se_modifico}");
+            }
         }else
         {
-            ModificarInscripcionUseCase.Ejecutar(_inscripcion);
-            _se_modifico = true;
-            Navegador.NavigateTo($"/listadoInscripciones/{_se_modifico}");
+            _errorSeleccion= true;
         }
         
     }
