@@ -9,4 +9,6 @@ public interface IRepositorioEstudiante
     void EliminarEstudiante(int id);
     Estudiante? GetEstudiante(int id);
     List<Estudiante> GetEstudiantes();
+    List<Estudiante> GetEstudiantesEstudiando();
+    List<Estudiante> GetEstudiantesAntiguos(); 
 }

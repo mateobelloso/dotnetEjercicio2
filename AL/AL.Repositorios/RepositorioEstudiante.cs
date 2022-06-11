@@ -37,6 +37,15 @@ public class RepositorioEstudiante : IRepositorioEstudiante
         }
     }
 
+    public void ModificarEstudiante(Estudiante estudiante)
+    {
+        using(var context = new InstitucionEducativaContext())
+        {
+            context.Update(estudiante);
+            context.SaveChanges();
+        }
+    }
+
     public List<Estudiante> GetEstudiantes()
     {
         using(var context = new InstitucionEducativaContext())
@@ -45,12 +54,21 @@ public class RepositorioEstudiante : IRepositorioEstudiante
         }
     }
 
-    public void ModificarEstudiante(Estudiante estudiante)
+    public List<Estudiante> GetEstudiantesEstudiando()
     {
         using(var context = new InstitucionEducativaContext())
         {
-            context.Update(estudiante);
-            context.SaveChanges();
+            // no se como hacer la consulta.
+            return ;            
+        }
+    }
+
+    public List<Estudiante> GetEstudiantesAntiguos()
+    {
+        using(var context = new InstitucionEducativaContext())
+        {
+             // no se como hacer la consulta.
+            return ;           
         }
     }
 }
