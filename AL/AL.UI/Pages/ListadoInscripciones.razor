@@ -8,18 +8,17 @@
 
 @if (_se_elimino)
 {
-    <p class='alert alert-danger'> Estudiante eliminado satisfactoriamente.</p>
+    <p class='alert alert-danger'> Inscripción eliminada satisfactoriamente.</p>
 }
 
 @if ( _se_modifico )
 {
-    <p class='alert alert-success'> Estudiante modificado correctamente.</p>
+    <p class='alert alert-success'> Inscripción modificada correctamente.</p>
 }
 
 <table class="table">
     <thead>
         <tr>
-            <th>ID</th>
             <th>ESTUDIANTE</th>
             <th>CURSO</th>
             <th>FECHA INSCRIPCION</th>
@@ -31,10 +30,9 @@
         @foreach (var inscripcion in _lista)
         {
         <tr>
-        <td>@inscripcion.Id</td>
         <td>@inscripcion.Estudiante?.Dni - @inscripcion.Estudiante?.Nombre - @inscripcion.Estudiante?.Apellido</td>
-        <td>@inscripcion.Curso?.Titulo - @inscripcion.Curso?.Fecha_inicio - @inscripcion.Curso?.Fecha_finalizacion</td>
-        <td>@inscripcion.Fecha_inscripcion</td>
+        <td>@inscripcion.Curso?.Titulo - @inscripcion.Curso?.Fecha_inicio.ToString("dd/MM/yyyy") - @inscripcion.Curso?.Fecha_finalizacion.ToString("dd/MM/yyyy")</td>
+        <td>@inscripcion.Fecha_inscripcion.ToString("dd/MM/yyyy")</td>
         <td>
             <button class="btn btn-success btn-sm" @onclick="()=>ModificarInscripcion(inscripcion.Id)"><i class="oi oi-pencil"></i>Modificar inscripcion</button>
             <button class="btn btn-danger btn-sm" @onclick="()=>EliminarInscripcion(inscripcion.Id)"><i class="oi oi-trash"></i>Eliminar inscripcion</button>

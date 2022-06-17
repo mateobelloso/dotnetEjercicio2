@@ -17,6 +17,11 @@
     <p class='alert alert-success'> Estudiante agregado satisfactoriamente.</p>
 }
 
+@if (_error.Length > 0)
+{
+    <p class="alert alert-danger">@_error</p>
+}
+
 <input placeholder="Ingrese nombre del estudiante" @bind="_estudiante.Nombre" class="form-control">
 <input placeholder="Ingrese apellido del estudiante" @bind="_estudiante.Apellido" class="form-control">
 <input type='email' placeholder="Ingrese email" @bind="_estudiante.Email" class="form-control">
@@ -30,6 +35,7 @@
     bool _nuevoEstudiante= true;
     bool _se_creo = false;
     bool _se_modifico = false;
+    string _error= "";
     
     protected override void OnParametersSet()
     {
@@ -48,10 +54,19 @@
     {
         if(_nuevoEstudiante)
         {
-            AgregarEstudianteUseCase.Ejecutar(_estudiante);
-            _se_creo = true;
-            _estudiante = new Estudiante();
-            Navegador.NavigateTo("/agregarEstudiante");
+            try
+            {
+                AgregarEstudianteUseCase.Ejecutar(_estudiante);
+                _se_creo = true;
+                _error= "";
+                _estudiante = new Estudiante();
+                Navegador.NavigateTo("/agregarEstudiante");
+            }
+            catch(Exception e)
+            {
+                _error= e.Message;
+                _se_creo= false;
+            }
         }else
         {
             ModificarEstudianteUseCase.Ejecutar(_estudiante);

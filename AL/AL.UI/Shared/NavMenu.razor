@@ -34,12 +34,12 @@
         </div>
         @if(_desplegarCursos)
         {
-        <div class="nav-item px-3">
+        <div class="nav-item px-3" style="font-stretch: condensed;">
             <NavLink class="nav-link" href="agregarCurso">
                 <span class="oi oi-plus" aria-hidden="true"></span> Agregar curso
             </NavLink>
         </div>
-        <div class="nav-item px-3">
+        <div class="nav-item px-3" style="font-stretch: condensed;">
             <NavLink class="nav-link" href="listadoCursos">
                 <span class="oi oi-list" aria-hidden="true"></span> Listado de cursos
             </NavLink>
@@ -53,14 +53,25 @@
         </div>
         @if(_desplegarEstudiantes)
         {
-        <div class="nav-item px-3">
+        <div class="nav-item px-3" style="font-stretch: condensed;">
             <NavLink class="nav-link" href="agregarEstudiante">
                 <span class="oi oi-plus" aria-hidden="true"></span> Agregar estudiante
             </NavLink>
         </div>
-        <div class="nav-item px-3">
+        <div class="nav-item px-3" style="font-stretch: condensed;">
             <NavLink class="nav-link" href="listadoEstudiantes">
                 <span class="oi oi-list" aria-hidden="true"></span> Listado de estudiantes
+            </NavLink>
+        </div>
+        <div class="nav-item px-3" style="font-stretch: condensed;">
+            <NavLink class="nav-link" href="estudiantesEstudiando">
+                <span class="oi oi-plus"  aria-hidden="true"></span> Cursando
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3" style="font-stretch: condensed;">
+            <NavLink class="nav-link" href="estudiantesAntiguos">
+                <span class="oi oi-plus"  aria-hidden="true"></span>Con cursos terminados
             </NavLink>
         </div>
         }
@@ -72,29 +83,17 @@
         </div>
         @if(_desplegarInscripciones)
         {
-        <div class="nav-item px-3">
+        <div class="nav-item px-3" style="font-stretch: condensed;">
             <NavLink class="nav-link" href="agregarInscripcion">
                 <span class="oi oi-plus" aria-hidden="true"></span> Agregar inscripcion
             </NavLink>
         </div>
-        <div class="nav-item px-3">
+        <div class="nav-item px-3" style="font-stretch: condensed;">
             <NavLink class="nav-link" href="listadoInscripciones">
                 <span class="oi oi-list" aria-hidden="true"></span> Listado Inscripciones
             </NavLink>
         </div>
         }
-
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="estudiantesEstudiando">
-                <span class="oi oi-plus"  aria-hidden="true"></span> Quién está estudiando?
-            </NavLink>
-        </div>
-
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="estudiantesAntiguos">
-                <span class="oi oi-plus"  aria-hidden="true"></span> Veteranos
-            </NavLink>
-        </div>
 
     </nav>
 </div>
@@ -107,16 +106,22 @@
 
     void DesplegarCursos()
     {
+        _desplegarEstudiantes= false;
+        _desplegarInscripciones= false;
         _desplegarCursos= !_desplegarCursos;
     }
 
     void DesplegarEstudiantes()
     {
+        _desplegarCursos= false;
+        _desplegarInscripciones= false;
         _desplegarEstudiantes= !_desplegarEstudiantes;
     }
 
     void DesplegarInscripciones()
     {
+        _desplegarCursos= false;
+        _desplegarEstudiantes= false;
         _desplegarInscripciones= !_desplegarInscripciones;
     }
     private bool collapseNavMenu = true;

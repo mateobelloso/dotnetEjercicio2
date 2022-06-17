@@ -1,14 +1,23 @@
-@page "/listadoCursos"
+@page "/listadoCursos/{Mod:bool?}"
 @inject ListarCursosUseCase ListarCursosUseCase
 @inject EliminarCursoUseCase EliminarCursoUseCase
 @inject IJSRuntime JsRuntime
 @inject ObtenerCursoUseCase ObtenerCursoUseCase
 @inject NavigationManager Navegador
 
+@if ( _se_modifico )
+{
+    <p class='alert alert-success'> Curso modificado correctamente.</p>
+}
+
+@if (_se_elimino)
+{
+    <p class='alert alert-danger'> Curso eliminado satisfactoriamente.</p>
+}
+
 <table class="table">
 <thead>
 <tr>
-<th>ID</th>
 <th>TITULO</th>
 <th>DESCRIPCION</th>
 <th>FECHA DE INICIO</th>
@@ -20,13 +29,11 @@
 @foreach (var curso in _lista)
 {
 <tr>
-<td>@curso.Id</td>
 <td>@curso.Titulo</td>
 <td>@curso.Descripcion</td>
-<td>@curso.Fecha_inicio</td>
-<td>@curso.Fecha_finalizacion</td>
+<td>@curso.Fecha_inicio.ToString("dd/MM/yyyy")</td>
+<td>@curso.Fecha_finalizacion.ToString("dd/MM/yyyy")</td>
 <td>
-    <button class="btn btn-primary btn-sm" @onclick="()=>VerCurso(curso.Id)"><i class="oi oi-eye"></i>Ver curso</button>
     <button class="btn btn-info btn-sm" @onclick="()=>VerEstudiantesInscriptos(curso.Id)"><i class="oi oi-people"></i>Ver estudiantes inscriptos</button>
     <button class="btn btn-success btn-sm" @onclick="()=>ModificarCurso(curso.Id)"><i class="oi oi-pencil"></i>Modificar curso</button>
     <button class="btn btn-danger btn-sm" @onclick="()=>EliminarCurso(curso.Id)"><i class="oi oi-trash"></i>Eliminar curso</button>
@@ -39,15 +46,22 @@
 @code 
 {
     List<Curso> _lista = new List<Curso>();
+    [Parameter] public bool? Mod { get; set; }
+    bool _se_modifico= false;
+    bool _se_elimino= false;
+
     protected override void OnInitialized()
     {
         _lista = ListarCursosUseCase.Ejecutar();
     }
 
-    void VerCurso(int id)
-    {
-        Navegador.NavigateTo($"verCurso/{id}");
-    }
+        protected override void OnParametersSet()
+        {
+            if (Mod != null)
+            {
+                _se_modifico= Mod.Value;                
+            }
+        }
 
     void ModificarCurso(int id)
     {
@@ -68,8 +82,10 @@
             if(confirmado)
             {
                 EliminarCursoUseCase.Ejecutar(id);
-                _lista= ListarCursosUseCase.Ejecutar();
+                _se_elimino= true;
+                _lista= ListarCursosUseCase.Ejecutar();              
             }
         }
     }
 }
+

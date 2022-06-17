@@ -14,6 +14,12 @@ public class AgregarEstudianteUseCase
 
     public void Ejecutar(Estudiante estudiante)
     {
-        _rEstudiante.AgregarEstudiante(estudiante);
+        if(_rEstudiante.GetEstudiantePorDni(estudiante.Dni) == null)
+        {
+            _rEstudiante.AgregarEstudiante(estudiante);
+        }else
+        {
+            throw new Exception("Ya existe un estudiante con ese DNI");
+        }
     }
 }

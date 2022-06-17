@@ -27,6 +27,11 @@
     <p class="alert alert-danger">Debe elegir un curso y un estudiante</p>
 }
 
+@if (_error.Length > 0)
+{
+    <p class="alert alert-danger">@_error</p>
+}
+
 <!--<input placeholder="Ingrese nombre del estudiante" @bind="_inscripcion.Estudiante?.Nombre" class="form-control">
 <input placeholder="Ingrese apellido del estudiante" @bind="_inscripcion.Estudiante?.Apellido" class="form-control">
 <input type='email' placeholder="Ingrese email" @bind="_inscripcion.Estudiante?.Email" class="form-control">
@@ -50,7 +55,7 @@
 <select name="curso" aria-placeholder="Seleccionar" @bind="_cursoSeleccionado" class="form-control" required>
     @foreach (var curso in _listaCursos)
     {
-        <option value="@curso.Id">@curso.Titulo - @curso.Descripcion - @curso.Fecha_inicio - @curso.Fecha_finalizacion</option>        
+        <option value="@curso.Id">@curso.Titulo - @curso.Fecha_inicio.ToString("dd/MM/yyyy") - @curso.Fecha_finalizacion.ToString("dd/MM/yyyy")</option>        
     }
 </select>
 <input type="datetime-local" @bind="_inscripcion.Fecha_inscripcion" class="form-control">
@@ -62,9 +67,6 @@
 <input type="datetime-local" placeholder="Fecha de finalizacion" @bind="_inscripcion.Curso?.Fecha_finalizacion" class="form-control">-->
 
 <button class="btn btn-primary" @onclick="Aceptar">Aceptar</button>
-
-@_cursoSeleccionado
-@_estudianteSeleccionado
 
 @code 
 {
@@ -78,6 +80,7 @@
     bool _se_creo = false;
     bool _se_modifico = false;
     bool _errorSeleccion= false;
+    string _error="";
 
     protected override void OnInitialized()
     {
@@ -106,10 +109,19 @@
             _inscripcion.CursoId= _cursoSeleccionado;
             if(_nuevaInscripcion)
             {
-                AgregarInscripcionUseCase.Ejecutar(_inscripcion);
-                _se_creo = true;
-                _inscripcion = new Inscripcion();
-                Navegador.NavigateTo("/agregarInscripcion");
+                try
+                {
+                    AgregarInscripcionUseCase.Ejecutar(_inscripcion);
+                    _se_creo = true;
+                    _error= "";
+                    _inscripcion = new Inscripcion();
+                    Navegador.NavigateTo("/agregarInscripcion");
+                }
+                catch(Exception e)
+                {
+                    _error= e.Message;
+                    _se_creo= false;
+                }
             }else
             {
                 ModificarInscripcionUseCase.Ejecutar(_inscripcion);

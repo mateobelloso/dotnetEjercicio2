@@ -8,6 +8,7 @@ public interface IRepositorioEstudiante
     void ModificarEstudiante(Estudiante estudiante);
     void EliminarEstudiante(int id);
     Estudiante? GetEstudiante(int id);
+    Estudiante? GetEstudiantePorDni(int dni);
     List<Estudiante> GetEstudiantes();
     List<Estudiante> GetEstudiantesEstudiando();
     List<Estudiante> GetEstudiantesAntiguos(); 

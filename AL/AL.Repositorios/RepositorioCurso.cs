@@ -18,9 +18,9 @@ public class RepositorioCurso : IRepositorioCurso
 
     public void EliminarCurso(int id)
     {
+        var cursoBorrar= GetCurso(id);
         using(var context = new InstitucionEducativaContext())
         {
-            var cursoBorrar= context.Cursos.Where(c => c.Id == id).SingleOrDefault();
             if(cursoBorrar != null)
             {
                 context.Remove(cursoBorrar);

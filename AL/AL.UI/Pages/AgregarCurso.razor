@@ -12,6 +12,11 @@
     <h1>Modificar curso @_curso.Titulo:</h1>
 }
 
+@if (_se_creo)
+{
+    <p class='alert alert-success'> Curso añadido exitosamente.</p>
+}
+
 
 <input placeholder="Titulo" @bind="_curso.Titulo" class="form-control">
 <input placeholder="Descripcion" @bind="_curso.Descripcion" class="form-control">
@@ -23,6 +28,9 @@
     Curso _curso = new Curso();
     [Parameter] public int? Id { get; set; }
     bool _nuevoCurso= true;
+
+    bool _se_modifico= false;
+    bool _se_creo= false;
 
     protected override void OnParametersSet()
     {
@@ -42,12 +50,15 @@
         if(_nuevoCurso)
         {
             AgregarCursoUseCase.Ejecutar(_curso);
+            _curso = new Curso();
+            _se_creo = true;
+            Navegador.NavigateTo("/agregarCurso");
         }else
         {
             ModificarCursoUseCase.Ejecutar(_curso);
+            _se_modifico= true;
+            Navegador.NavigateTo($"/listadoCursos/{_se_modifico}");
         }
-        _curso = new Curso();
-        Navegador.NavigateTo("/");
     }
 }
 

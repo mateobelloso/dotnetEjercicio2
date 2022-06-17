@@ -73,13 +73,22 @@ public class RepositorioEstudiante : IRepositorioEstudiante
     {
         using(var context = new InstitucionEducativaContext())
         {
-            List<Estudiante> estudiantesAntiguos= new List<Estudiante>();
             List<Curso> cursosTerminados= context.Cursos.Include(c => c.Inscripciones)
                 .ThenInclude(i => i.Estudiante)
                 .Where(cur => cur.Fecha_finalizacion < DateTime.Now)
                 .ToList();
+
+            List<Estudiante> estudiantesAntiguos= new List<Estudiante>();
             cursosTerminados.ForEach(c => c.Inscripciones.ForEach(i => estudiantesAntiguos.Add(new Estudiante(){ Nombre=i.Estudiante.Nombre, Apellido=i.Estudiante.Apellido, Inscripciones= new List<Inscripcion>(){i}})));
             return estudiantesAntiguos;           
+        }
+    }
+
+    public Estudiante? GetEstudiantePorDni(int dni)
+    {
+        using(var context= new InstitucionEducativaContext())
+        {
+            return context.Estudiantes.Where(e => e.Dni == dni).SingleOrDefault();
         }
     }
 }
