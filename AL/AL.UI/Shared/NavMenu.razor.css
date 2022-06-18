@@ -60,3 +60,21 @@
         display: block;
     }
 }
+
+#nav-submenu{
+    padding-right: 5%;
+    padding-left: 10%;  
+}
+
+.nav-item px-3{
+    line-height:0;   
+}
+
+.nav-link{
+    display:block;
+    display:inline-block;
+    line-height:5px;
+    font-size: 5px;
+    width: 1%;
+    white-space: nowrap;
+}

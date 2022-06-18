@@ -8,19 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\mateo\\.nuget\\packages\\": {}
+    "C:\\Users\\rampi\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mateo\\Desktop\\Taller de Lenguajes .NET\\dotnetEjercicio2\\AL\\AL.Aplicacion\\AL.Aplicacion.csproj",
+      "projectUniqueName": "J:\\Facu J\\dotnetEjercicio2\\AL\\AL.Aplicacion\\AL.Aplicacion.csproj",
       "projectName": "AL.Aplicacion",
-      "projectPath": "C:\\Users\\mateo\\Desktop\\Taller de Lenguajes .NET\\dotnetEjercicio2\\AL\\AL.Aplicacion\\AL.Aplicacion.csproj",
-      "packagesPath": "C:\\Users\\mateo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mateo\\Desktop\\Taller de Lenguajes .NET\\dotnetEjercicio2\\AL\\AL.Aplicacion\\obj\\",
+      "projectPath": "J:\\Facu J\\dotnetEjercicio2\\AL\\AL.Aplicacion\\AL.Aplicacion.csproj",
+      "packagesPath": "C:\\Users\\rampi\\.nuget\\packages\\",
+      "outputPath": "J:\\Facu J\\dotnetEjercicio2\\AL\\AL.Aplicacion\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\mateo\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\rampi\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -58,7 +58,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "J:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

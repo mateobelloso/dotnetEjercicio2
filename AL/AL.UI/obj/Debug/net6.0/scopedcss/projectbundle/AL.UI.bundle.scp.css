@@ -132,3 +132,21 @@ main[b-p15pbsciya] {
         display: block;
     }
 }
+
+#nav-submenu[b-1o6ufadtpc]{
+    padding-right: 5%;
+    padding-left: 10%;  
+}
+
+.nav-item px-3[b-1o6ufadtpc]{
+    line-height:0;   
+}
+
+#nav-link[b-1o6ufadtpc]{
+    display:block;
+    display:inline-block;
+    line-height:5px;
+    font-size: 5px;
+    width: 1%;
+    white-space: nowrap;
+}
