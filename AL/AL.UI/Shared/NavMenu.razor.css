@@ -93,7 +93,22 @@
     100% { transform: rotate(-1deg);}
 }
 
-.oi oi-home:hover{
+div #inicio:hover{
+    animation: vibrate 0.5s;
+    animation-iteration-count: infinite;
+}
+
+div #cursos:hover{
+    animation: vibrate 0.5s;
+    animation-iteration-count: infinite;
+}
+
+div #estudiantes:hover{
+    animation: vibrate 0.5s;
+    animation-iteration-count: infinite;
+}
+
+div #inscripciones:hover{
     animation: vibrate 0.5s;
     animation-iteration-count: infinite;
 }

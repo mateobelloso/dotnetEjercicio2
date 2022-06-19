@@ -93,7 +93,22 @@
     100% { transform: rotate(-1deg);}
 }
 
-.oi oi-home:hover[b-1o6ufadtpc]{
+div #inicio:hover[b-1o6ufadtpc]{
+    animation: vibrate-b-1o6ufadtpc 0.5s;
+    animation-iteration-count: infinite;
+}
+
+div #cursos:hover[b-1o6ufadtpc]{
+    animation: vibrate-b-1o6ufadtpc 0.5s;
+    animation-iteration-count: infinite;
+}
+
+div #estudiantes:hover[b-1o6ufadtpc]{
+    animation: vibrate-b-1o6ufadtpc 0.5s;
+    animation-iteration-count: infinite;
+}
+
+div #inscripciones:hover[b-1o6ufadtpc]{
     animation: vibrate-b-1o6ufadtpc 0.5s;
     animation-iteration-count: infinite;
 }

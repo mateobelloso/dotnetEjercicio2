@@ -9,13 +9,13 @@
 
 <div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
     <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All" @onclick="()=>funcionInicio()">
+        <div id="inicio" class="nav-item px-3">
+            <NavLink id="inicio" class="nav-link" href="" Match="NavLinkMatch.All" @onclick="()=>funcionInicio()">
                 <span class="oi oi-home" aria-hidden="true"></span> Inicio
             </NavLink>
         </div>  
               
-        <div class="nav-item px-3">
+        <div id="cursos" class="nav-item px-3">
             <NavLink class="nav-link" @onclick="()=>DesplegarCursos()" href="listadoCursos">
                 <span class="oi oi-book"  aria-hidden="true"></span> Cursos
             </NavLink>
@@ -36,7 +36,7 @@
         </div>
         }
 
-        <div class="nav-item px-3">
+        <div id="estudiantes" class="nav-item px-3">
             <NavLink class="nav-link" @onclick="()=>DesplegarEstudiantes()" href="listadoEstudiantes">
                 <span class="oi oi-people"  aria-hidden="true"></span> Estudiantes
             </NavLink>
@@ -67,7 +67,7 @@
         </div>
         }
 
-        <div class="nav-item px-3">
+        <div id="inscripciones" class="nav-item px-3">
             <NavLink class="nav-link" @onclick="()=>DesplegarInscripciones()" href="listadoInscripciones">
                 <span class="oi oi-document"  aria-hidden="true"></span> Inscripciones
             </NavLink>
