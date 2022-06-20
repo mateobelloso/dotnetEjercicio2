@@ -4,18 +4,20 @@ using AL.Aplicacion.Interfaces;
 
 namespace AL.Repositorios;
 
+//Clase repositorio que implementa la interfaz de repositorio de inscripcion.
 public class RepositorioInscripcion : IRepositorioInscripcion
 {
+    //Agrega una inscripcion a la base de datos
     public void AgregarInscripcion(Inscripcion inscripcion)
     {
         using(var context = new InstitucionEducativaContext())
         {
-            //context.ChangeTracker.TrackGraph(inscripcion, node => node.Entry.State= !node.Entry.IsKeySet ? EntityState.Added : EntityState.Unchanged);
             context.Add(inscripcion);
             context.SaveChanges();
         }
     }
 
+    //Elimina la inscripcion con id igual al pasado como parametro en caso de existir.
     public void EliminarInscripcion(int id)
     {
         var inscripcionBorrar= GetInscripcion(id);
@@ -29,6 +31,7 @@ public class RepositorioInscripcion : IRepositorioInscripcion
         }
     }
 
+    //Devuelve la inscripcion con el id pasado como parametro, caso de no existir la inscripcion devuelve null.
     public Inscripcion? GetInscripcion(int id)
     {
         using(var context = new InstitucionEducativaContext())
@@ -38,6 +41,7 @@ public class RepositorioInscripcion : IRepositorioInscripcion
         }
     }
 
+    //Devuelve un listado de todos las inscripciones que se encuentran en la base de datos.
     public List<Inscripcion> GetInscripciones()
     {
         using(var context = new InstitucionEducativaContext())
@@ -47,6 +51,7 @@ public class RepositorioInscripcion : IRepositorioInscripcion
         }
     }
 
+    ////Modifica la inscripcion pasada como parametro
     public void ModificarInscripcion(Inscripcion inscripcion)
     {
         using(var context = new InstitucionEducativaContext())

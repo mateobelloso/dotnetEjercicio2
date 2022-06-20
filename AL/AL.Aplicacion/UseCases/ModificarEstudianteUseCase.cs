@@ -3,6 +3,7 @@ using AL.Aplicacion.Interfaces;
 
 namespace AL.Aplicacion.UseCases;
 
+// Caso de uso para modificar un estudiante en el repositorio.
 public class ModificarEstudianteUseCase
 {
     private readonly IRepositorioEstudiante _rEstudiante;

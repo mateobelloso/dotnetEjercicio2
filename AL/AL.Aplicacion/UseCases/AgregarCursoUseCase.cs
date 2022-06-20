@@ -3,6 +3,7 @@ using AL.Aplicacion.Interfaces;
 
 namespace AL.Aplicacion.UseCases;
 
+// Caso de uso para agregar un curso al repositorio.
 public class AgregarCursoUseCase
 {
     private readonly IRepositorioCurso _rCurso;

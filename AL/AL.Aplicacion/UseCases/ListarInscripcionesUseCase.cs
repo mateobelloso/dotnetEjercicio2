@@ -3,6 +3,7 @@ using AL.Aplicacion.Interfaces;
 
 namespace AL.Aplicacion.UseCases;
 
+// Caso de uso para listar todos las inscripciones que hay en el repositorio.
 public class ListarInscripcionesUseCase
 {
     private readonly IRepositorioInscripcion _rInscripcion;

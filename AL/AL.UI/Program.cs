@@ -36,7 +36,7 @@ builder.Services.AddTransient<ListarInscripcionesUseCase>();
 //CASOS ESPECIALES
 builder.Services.AddTransient<ListarEstudiantesEstudiandoUseCase>();
 builder.Services.AddTransient<ListarEstudiantesAntiguosUseCase>();
-//CONFIGURAR LOS REPOSITORIOS CON SUS INTERFACES
+//CONFIGURA LOS REPOSITORIOS CON SUS INTERFACES
 builder.Services.AddScoped<IRepositorioCurso,RepositorioCurso>();
 builder.Services.AddScoped<IRepositorioEstudiante,RepositorioEstudiante>();
 builder.Services.AddScoped<IRepositorioInscripcion,RepositorioInscripcion>();

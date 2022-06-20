@@ -1,5 +1,6 @@
 namespace AL.Aplicacion.Entidades;
 
+//ENTIDAD ESTUDIANTE
 public class Estudiante
 {
     public int Id { get; set; }

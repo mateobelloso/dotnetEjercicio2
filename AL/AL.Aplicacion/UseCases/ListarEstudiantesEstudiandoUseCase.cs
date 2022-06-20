@@ -3,6 +3,7 @@ using AL.Aplicacion.Interfaces;
 
 namespace AL.Aplicacion.UseCases;
 
+// Caso de uso para listar todos los estudiantes que hay en el repositorio cursando actualmente una materia.
 public class ListarEstudiantesEstudiandoUseCase
 {
     private readonly IRepositorioEstudiante _rEstudiante;

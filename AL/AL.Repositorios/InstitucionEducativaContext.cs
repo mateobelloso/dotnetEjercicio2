@@ -3,7 +3,7 @@ using AL.Aplicacion.Entidades;
 
 namespace AL.Repositorios;
 
-
+//Clase que representa la base de datos de institucion educativa
 public class InstitucionEducativaContext : DbContext
 {
     #nullable disable

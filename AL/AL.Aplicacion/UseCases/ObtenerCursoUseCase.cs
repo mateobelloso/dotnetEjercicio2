@@ -3,6 +3,7 @@ using AL.Aplicacion.Interfaces;
 
 namespace AL.Aplicacion.UseCases;
 
+// Caso de uso para obtener un curso del repositorio.
 public class ObtenerCursoUseCase
 {
     private readonly IRepositorioCurso _rcurso;

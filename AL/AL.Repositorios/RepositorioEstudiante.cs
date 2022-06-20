@@ -4,8 +4,10 @@ using AL.Aplicacion.Interfaces;
 
 namespace AL.Repositorios;
 
+//Clase repositorio que implementa la interfaz de repositorio de estudiante.
 public class RepositorioEstudiante : IRepositorioEstudiante
 {
+    //Agrega un estudiante a la base de datos
     public void AgregarEstudiante(Estudiante estudiante)
     {
         using(var context = new InstitucionEducativaContext())
@@ -15,6 +17,7 @@ public class RepositorioEstudiante : IRepositorioEstudiante
         }
     }
 
+    //Elimina el estudiante con id igual al pasado como parametro en caso de existir.
     public void EliminarEstudiante(int id)
     {
         var estudianteBorrar= GetEstudiante(id);
@@ -28,6 +31,7 @@ public class RepositorioEstudiante : IRepositorioEstudiante
         }
     }
 
+    //Devuelve el estudiante con el id pasado como parametro, caso de no existir el estudiante devuelve null.
     public Estudiante? GetEstudiante(int id)
     {
         using(var context = new InstitucionEducativaContext())
@@ -37,6 +41,7 @@ public class RepositorioEstudiante : IRepositorioEstudiante
         }
     }
 
+    //Modifica el estudiante pasado como parametro
     public void ModificarEstudiante(Estudiante estudiante)
     {
         using(var context = new InstitucionEducativaContext())
@@ -46,6 +51,7 @@ public class RepositorioEstudiante : IRepositorioEstudiante
         }
     }
 
+    //Devuelve un listado de todos los estudiantes que se encuentran en la base de datos con sus inscripciones matcheadas.
     public List<Estudiante> GetEstudiantes()
     {
         using(var context = new InstitucionEducativaContext())
@@ -54,6 +60,7 @@ public class RepositorioEstudiante : IRepositorioEstudiante
         }
     }
 
+    //Devuelve un listado de todos los estudiantes que se encuentran en la base de datos que actualmente estan cursando alguna materia.
     public List<Estudiante> GetEstudiantesEstudiando()
     {
         using(var context = new InstitucionEducativaContext())
@@ -69,6 +76,7 @@ public class RepositorioEstudiante : IRepositorioEstudiante
         }
     }
 
+    //Devuelve un listado de todos los estudiantes que se encuentran en la base de datos que hayan cursado alguna materia.
     public List<Estudiante> GetEstudiantesAntiguos()
     {
         using(var context = new InstitucionEducativaContext())
@@ -84,6 +92,7 @@ public class RepositorioEstudiante : IRepositorioEstudiante
         }
     }
 
+    //Devuelve el estudiante que tenga el dni igual al pasado como parametro, caso de no existir retorna null.
     public Estudiante? GetEstudiantePorDni(int dni)
     {
         using(var context= new InstitucionEducativaContext())

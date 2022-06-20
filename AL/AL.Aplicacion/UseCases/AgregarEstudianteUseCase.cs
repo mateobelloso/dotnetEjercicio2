@@ -3,6 +3,7 @@ using AL.Aplicacion.Interfaces;
 
 namespace AL.Aplicacion.UseCases;
 
+// Caso de uso para agregar un estudiante al repositorio.
 public class AgregarEstudianteUseCase
 {
     private readonly IRepositorioEstudiante _rEstudiante;

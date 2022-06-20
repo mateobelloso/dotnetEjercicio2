@@ -3,6 +3,7 @@ using AL.Aplicacion.Interfaces;
 
 namespace AL.Aplicacion.UseCases;
 
+// Caso de uso para agregar una inscripcion al repositorio.
 public class AgregarInscripcionUseCase
 {
     private readonly IRepositorioInscripcion _rInscripcion;

@@ -3,6 +3,7 @@ using AL.Aplicacion.Interfaces;
 
 namespace AL.Aplicacion.UseCases;
 
+// Caso de uso para modificar un curso en el repositorio.
 public class ModificarCursoUseCase
 {
     private readonly IRepositorioCurso _rcurso;

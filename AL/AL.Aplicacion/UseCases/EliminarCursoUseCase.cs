@@ -3,6 +3,7 @@ using AL.Aplicacion.Interfaces;
 
 namespace AL.Aplicacion.UseCases;
 
+// Caso de uso para eliminar un curso en el repositorio.
 public class EliminarCursoUseCase
 {
     private readonly IRepositorioCurso _rcurso;

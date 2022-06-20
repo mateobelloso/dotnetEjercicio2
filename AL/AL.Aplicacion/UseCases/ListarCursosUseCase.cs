@@ -3,6 +3,7 @@ using AL.Aplicacion.Interfaces;
 
 namespace AL.Aplicacion.UseCases;
 
+// Caso de uso para listar todos los cursos que hay en el repositorio.
 public class ListarCursosUseCase
 {
     private readonly IRepositorioCurso _rcurso;
