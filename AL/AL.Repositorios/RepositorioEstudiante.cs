@@ -31,7 +31,8 @@ public class RepositorioEstudiante : IRepositorioEstudiante
         }
     }
 
-    //Devuelve el estudiante con el id pasado como parametro, caso de no existir el estudiante devuelve null.
+    //  Devuelve el estudiante con el id pasado como parametro, con sus inscripciones y cursos matcheados,
+    //  caso de no existir el estudiante devuelve null.
     public Estudiante? GetEstudiante(int id)
     {
         using(var context = new InstitucionEducativaContext())
@@ -60,7 +61,10 @@ public class RepositorioEstudiante : IRepositorioEstudiante
         }
     }
 
-    //Devuelve un listado de todos los estudiantes que se encuentran en la base de datos que actualmente estan cursando alguna materia.
+    //  Devuelve un listado de todos los estudiantes, con la inscripcion matcheada,
+    //  que se encuentran en la base de datos que actualmente estan cursando algun curso.
+    //  Los usuarios de ésta lista pueden repetirse ya que pueden estar inscriptos en más de un curso.
+    
     public List<Estudiante> GetEstudiantesEstudiando()
     {
         using(var context = new InstitucionEducativaContext())
@@ -76,7 +80,8 @@ public class RepositorioEstudiante : IRepositorioEstudiante
         }
     }
 
-    //Devuelve un listado de todos los estudiantes que se encuentran en la base de datos que hayan cursado alguna materia.
+    //  Devuelve un listado de todos los estudiantes, con la inscripcion matcheada, que se encuentran en la base de datos que hayan cursado alguna materia.
+    //  Los usuarios de ésta lista pueden repetirse ya que pueden haber finalizado más de un curso.
     public List<Estudiante> GetEstudiantesAntiguos()
     {
         using(var context = new InstitucionEducativaContext())
